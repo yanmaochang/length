@@ -1,6 +1,6 @@
 /****************************************************************\
                       All Rights Reserved   
-                      yanmaochang@126.com　　　　　
+                      yanmaochang@126.com
 *****************************************************************
   Project  :    GITHUB testing 
   Filename :    GithubTest.cpp
