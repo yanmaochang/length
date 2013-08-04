@@ -19,6 +19,57 @@
 
 using namespace std;
 
+int main(void)
+{
+    double result = 0.0;
+    vector<string> uom; //STL to save UOM
+    vector<double> ratio; //STL to save ratio  
+    string whole_line;
+
+    //declare function
+    void learn(string whole_line, vector<string>& uom, vector<double>& ratio);
+    double resizing(double value, string unit, vector<string>& uom, vector<double>& ratio);
+    double calculate(string whole_line, vector<string>& uom,vector<double>& ratio);
+
+    //creat the input file and output file
+    ifstream input_file("input.txt");
+    if(!input_file)
+    {
+        cerr << "ERROR: Can not open the input.txt !" << endl;
+        return -1;
+    }
+    ofstream output_file("output.txt");
+    if(!output_file)
+    {
+        cerr << "ERROR: Can not creat the output.txt !" << endl;
+        return -1;
+    }
+
+    output_file << "yan.maochang@163.com" << "\n" << endl;
+
+    while(getline(input_file, whole_line))
+    {
+        //Learn the formula
+        if((whole_line.find("=")) != whole_line.npos)
+        {
+            learn(whole_line, uom, ratio); 
+        }
+
+        //calculate the results
+        else if(((whole_line.find("=")) == whole_line.npos) && !(whole_line.empty()))
+        {
+            result = calculate(whole_line, uom, ratio); 
+
+             //Output the result
+            output_file << setiosflags(ios::fixed) << setprecision(2) << result << " m" <<endl;
+        }
+    }
+
+    input_file.close();
+    output_file.close();
+    return 0;
+}
+
 /****************************************************************\
 Description: 
     Learn the formula from the input.txt
@@ -122,48 +173,3 @@ double calculate(string whole_line, vector<string>& uom,vector<double>& ratio)
 }
 
 
-int main(void)
-{
-    double result = 0.0;
-    vector<string> uom; //STL to save UOM
-    vector<double> ratio; //STL to save ratio  
-    string whole_line;
-
-    //creat the input file and output file
-    ifstream input_file("input.txt");
-    if(!input_file)
-    {
-        cerr << "ERROR: Can not open the input.txt !" << endl;
-        return -1;
-    }
-    ofstream output_file("output.txt");
-    if(!output_file)
-    {
-        cerr << "ERROR: Can not creat the output.txt !" << endl;
-        return -1;
-    }
-
-    output_file << "yan.maochang@163.com" << "\n" << endl;
-
-    while(getline(input_file, whole_line))
-    {
-        //Learn the formula
-        if((whole_line.find("=")) != whole_line.npos)
-        {
-            learn(whole_line, uom, ratio); 
-        }
-
-        //calculate the results
-        else if(((whole_line.find("=")) == whole_line.npos) && !(whole_line.empty()))
-        {
-            result = calculate(whole_line, uom, ratio); 
-
-             //Output the result
-            output_file << setiosflags(ios::fixed) << setprecision(2) << result << " m" <<endl;
-        }
-    }
-
-    input_file.close();
-    output_file.close();
-    return 0;
-}
