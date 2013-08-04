@@ -1,13 +1,13 @@
 /****************************************************************\
-                      All Rights Reserved   
-                      yanmaochang@126.com
+                      All Rights Reserved
+                      yan.maochang@163.com
 *****************************************************************
-  Project  :    GITHUB testing 
-  Filename :    GithubTest.cpp
+  Project  :    GITHUB testing
+  Filename :    Main.cpp
   History  :
-             Date              Name              Modification                
+             Date              Name              Modification
              ----              ----              ------------
-            2013-08-03        Yan-Maochang       Created              
+            2013-08-04        Yan-Maochang       Created
 \***************************************************************/
 
 #include <iostream>
@@ -143,7 +143,7 @@ int main(void)
         return -1;
     }
 
-    output_file << "yanmaochang@126.com" << "\n" << endl;
+    output_file << "yan.maochang@163.com" << "\n" << endl;
 
     while(getline(input_file, whole_line))
     {
